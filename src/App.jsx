@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import UserQueueProvider from './context/UserQueueContext'
+import NewUserForm from './components/UserForm/NewUserForm'
+import UserQueueList from './components/UserQueueList/UserQueueList'
+import AttendUser from './components/AttendUser/AttendUser'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <UserQueueProvider>
+      <header>
+        <h1>User Queue</h1>
+      </header>
+      <main className="app-container">
+        <section className='box-container'>
+          <NewUserForm />
+        </section>
+        <section className='box-container'>
+          <UserQueueList />
+        </section>
+        <section className='box-container'>
+          <AttendUser/>
+        </section>
+      </main>
+    </UserQueueProvider>
   )
 }
 
